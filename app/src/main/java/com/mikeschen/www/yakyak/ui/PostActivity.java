@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.client.Firebase;
+import com.mikeschen.www.yakyak.Constants;
 import com.mikeschen.www.yakyak.R;
 import com.mikeschen.www.yakyak.models.YakYak;
 
@@ -17,16 +21,18 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class PostActivity extends AppCompatActivity {
+public class PostActivity extends AppCompatActivity implements View.OnClickListener {
     ArrayList<YakYak> mPosts = new ArrayList<>();
     @Bind(R.id.detailPostTextView) TextView mDetailPostTextView;
     @Bind(R.id.replyEditText) EditText mReplyEditText;
+    @Bind(R.id.replyButton) Button mReplyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         ButterKnife.bind(this);
+
 
         int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
         mPosts = Parcels.unwrap(getIntent().getParcelableExtra("posts"));
@@ -35,7 +41,8 @@ public class PostActivity extends AppCompatActivity {
 
     @Override
         public void onClick(View view) {
-            String reply = mReplyEditText.getText().toString();
-            saveReplyToFirebase(reply);
+            if(view == mReplyButton) {
+                String reply = mReplyEditText.getText().toString();
+        }
     }
 }

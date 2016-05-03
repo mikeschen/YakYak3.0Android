@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setUpFirebaseQuery() {
         String post = mFirebasePostsRef.toString();
-       Log.d("retrieving post", post);
+        Log.d("retrieving post", post);
         mQuery = new Firebase(post);
     }
 
@@ -93,7 +93,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     public void savePostToFirebase(String post) {
-        Firebase addedPostRef = new Firebase(Constants.FIREBASE_URL_ADDED_POST);
-        addedPostRef.push().setValue(post);
+        YakYak newPostList = new YakYak(post);
+        Firebase ref = new Firebase(Constants.FIREBASE_URL_ADDED_POST);
+        Firebase newListRef = ref.push();
+        String pushId = newListRef.getKey();
+        newPostList.setPushId(pushId);
+        newListRef.setValue(newPostList);
+//        ref.push().setValue(post);
     }
 }
