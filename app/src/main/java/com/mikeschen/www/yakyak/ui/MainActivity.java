@@ -1,5 +1,6 @@
 package com.mikeschen.www.yakyak.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -87,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mPostButton) {
             String post = mPostEditText.getText().toString();
             savePostToFirebase(post);
+            Toast.makeText(MainActivity.this, "Posted", Toast.LENGTH_SHORT).show();
         }
     }
     public void savePostToFirebase(String post) {

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.mikeschen.www.yakyak.R;
 import com.mikeschen.www.yakyak.models.YakYak;
+import com.mikeschen.www.yakyak.ui.PostActivity;
 import com.mikeschen.www.yakyak.ui.PostDetailActivity;
 
 import org.parceler.Parcels;
@@ -33,7 +34,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext, PostDetailActivity.class);
+                Intent intent = new Intent(mContext, PostActivity.class);
                 intent.putExtra("position", itemPosition + "");
                 intent.putExtra("posts", Parcels.wrap(mPosts));
                 mContext.startActivity(intent);
