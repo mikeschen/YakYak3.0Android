@@ -51,10 +51,17 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     }
     public void saveReplyToFirebase(String reply) {
         int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
+
         mPosts = Parcels.unwrap(getIntent().getParcelableExtra("posts"));
-        Firebase addedReplyRef = new Firebase(Constants.FIREBASE_URL_ADDED_POST);
-        String replyRef = mPosts.get(startingPosition).getPushId();
-        Log.d("replyref", replyRef);
-        addedReplyRef.child(replyRef).push().setValue(reply);
+        String postId = mPosts.get(startingPosition).getPushId();
+
+        Firebase addedReplyRef = new Firebase(Constants.FIREBASE_URL_REPLIES).child(postId);
+        Firebase replyRef = addedReplyRef.push();
+        String replyPushId = replyRef.getKey();
+        addedReplyRef.push().setValue(reply);
+        //create new reply from String reply
+        //set id to replyPushId
+
+//        addedReplyRef.child(replyRef).push().setValue(reply);
     }
 }

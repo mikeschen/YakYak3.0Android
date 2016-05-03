@@ -99,6 +99,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String pushId = newListRef.getKey();
         newPostList.setPushId(pushId);
         newListRef.setValue(newPostList);
-//        ref.push().setValue(post);
     }
 }
