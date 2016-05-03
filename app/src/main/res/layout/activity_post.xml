@@ -18,13 +18,42 @@
         android:id="@+id/detailPostTextView"
         android:padding="10dp"
         android:background="#f5f5f1"
+        android:textColor="@color/colorMainText"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <View
         android:layout_width="fill_parent"
+    android:layout_height="2dp"
+    android:layout_below="@+id/detailPostTextView"
+    android:background="#c0c0c0"
+    android:id="@+id/view" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/replyEditText"
+        android:hint="Talk Back"
+        android:layout_below="@+id/view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:layout_width="fill_parent"
         android:layout_height="2dp"
-        android:layout_below="@+id/detailPostTextView"
-        android:background="#c0c0c0"/>
+        android:layout_below="@+id/replyEditText"
+        android:background="#c0c0c0"
+        android:id="@+id/view2" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reply"
+        android:id="@+id/replyButton"
+        android:layout_below="@+id/view2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorAccent"
+        android:background="#ffffff"/>
 </RelativeLayout>
