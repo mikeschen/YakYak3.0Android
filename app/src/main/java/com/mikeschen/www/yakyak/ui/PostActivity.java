@@ -7,12 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.mikeschen.www.yakyak.Constants;
 import com.mikeschen.www.yakyak.R;
+import com.mikeschen.www.yakyak.models.Reply;
 import com.mikeschen.www.yakyak.models.YakYak;
 
 import org.parceler.Parcels;
@@ -27,6 +29,8 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.detailPostTextView) TextView mDetailPostTextView;
     @Bind(R.id.replyEditText) EditText mReplyEditText;
     @Bind(R.id.replyButton) Button mReplyButton;
+    @Bind(R.id.listView) ListView mListView;
+    ArrayList<Reply> mReplies = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_post);
         ButterKnife.bind(this);
         mReplyButton.setOnClickListener(this);
-
+        Intent intent = getIntent();
 
         int startingPosition = Integer.parseInt(getIntent().getStringExtra("position"));
         mPosts = Parcels.unwrap(getIntent().getParcelableExtra("posts"));
